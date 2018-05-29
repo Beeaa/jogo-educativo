@@ -88,7 +88,16 @@ def verificador(resposta):
             elif alimento != i:
                 continue
 
+def inicio():
+    print("Bem-vindo ao nosso jogo! Nele, você aprenderá um pouco mais sobre a pirâmide alimentar!")
+    print("O jogo funciona assim: Um nome de alimento e sorteado, e você deverá digitar o número do grupo o qual aquele alimento pertence; se o número que você digitou for o mesmo que o número do grupo daquele alimento, você acerta.Se não, você deverá tentar novamente")
+    print("Lembre-se, a pirâmide possui 4 grupos, e, de acordo com a posição daquele grupo na pirâmide, sabemos o quanto devemos comer daquele tipo de alimento - quanto mais ao topo, menor deve ser a quantidade que devemos comer daquele tipo de alimento.")
+    print("Os grupos são: 1-Cereias, pães, raízes e massas, 2-Hortaliças e frutas, 3-Leite e derivados, carnes, ovos e legumes, 4-Açúcares, doces, oléos e gorduras") 
+    print("A ordem dos grupos, de cima para baixo é: 1, 2, 3 e 4")
+
+
 def main():
+    inicio()
     shuffleWords()
     resposta = pergunta()
     verificador(resposta)
