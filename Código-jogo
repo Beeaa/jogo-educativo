@@ -1,0 +1,96 @@
+import random
+
+# Grupo de alimentos
+grupoAlimentos = [
+
+    [  # grupo 1
+        'Pão',
+        'Mandioca',
+        'Batata',
+        'Trigo',
+        'Arroz',
+        'Aveia',
+        'Manteiga'
+    ],
+
+    [  # grupo 2
+        'Alface',
+        'Tomate',
+        'Cenoura',
+        'Berinjela',
+        'Beterraba',
+        'Brócolis',
+        'Abobrinha',
+        'Morango',
+        'Laranja',
+        'Mamão',
+        'Ameixa',
+        'Banana',
+        'Melancia',
+        'Pera',
+        'Maçã'
+    ],
+
+    [  # grupo 3
+        'Leite',
+        'Queijo',
+        'Iogurte',
+        'Bife',
+        'Frango',
+        'Peixe',
+        'Hamburguer',
+        'Soja',
+        'Feijão',
+        'Ervilha',
+        'Lentilha',
+        'Grão de bico'
+    ],
+
+    [  # grupo 4
+        'Sorvete',
+        'Bala',
+        'Açúcar',
+        'Doce de leite',
+        'Azeite',
+        'Óleo de soja',
+        'Óleo de Canola',
+    ]
+]
+
+# Conjunto de palavras a serem perguntadas ao jogador
+grupoPalavras = []
+
+# função que embaralha os alimentos no grupo
+def shuffleWords():
+    for i in grupoAlimentos:
+        palavraSorteada1, palavraSorteada2 = random.choice(i), random.choice(i)
+        while palavraSorteada1 == palavraSorteada2:
+            palavraSorteada2 = random.choice(i)
+        grupoPalavras.insert(random.randint(0, len(i)), palavraSorteada1)  # insere a palavra em uma
+        grupoPalavras.insert(random.randint(0, len(i)), palavraSorteada2)  # posição aleatória
+    return grupoPalavras
+
+def pergunta():
+    for i in grupoPalavras:
+        print("O alimento %s pertence a qual grupo (1, 2, 3 ou 4)?" % i)
+        resposta = int(input("Resposta: "))
+        return resposta
+
+def verificador(resposta):
+    for i in grupoPalavras:
+        for k, alimento in enumerate(grupoAlimentos[resposta - 1]):
+            if alimento == i:
+                return print("Acertou!")
+                break
+            elif k == (len(grupoAlimentos[resposta - 1]) - 1):
+                return print("Errou!")
+                break
+            elif alimento != i:
+                continue
+
+def main():
+    shuffleWords()
+    resposta = pergunta()
+    verificador(resposta)
+
+main()
